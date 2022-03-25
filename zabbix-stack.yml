@@ -1,0 +1,27 @@
+version: "3"
+services:
+
+  zabbix-mysql:
+    container_name: zabbix-mysql
+    image: mysql:latest
+    networks:
+      - zabbix
+    environment:
+      - MYSQL_ROOT_PASSWORD=zabbix
+      - MYSQL_DATABASE=zabbix
+      - MYSQL_USER=zabbix
+      - MYSQL_PASSWORD=zabbix
+
+  zabbix-server:
+    container_name: zabbix-server
+    image: zabbix/zabbix-server-mysql:latest
+    networks:
+      - zabbix
+    environment:
+      - DB_SERVER_HOST=zabbix-mysql
+      - MYSQL_DATABASE=zabbix
+      - MYSQL_USER=zabbix
+      - MYSQL_PASSWORD=zabbix
+
+networks:
+  zabbix:
