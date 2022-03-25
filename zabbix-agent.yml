@@ -1,12 +1,12 @@
 version: "2"
 services:
-  container_name: zabbix-agent
-  image: zabbix/zabbix-agent:latest
-  restart: always
-  privileged: true
-  networks:
-    - zabbix
-  environment:
-    - ZBX_HOSTNAME=Zabbix_host
-    - ZBX_SERVER_HOST=zabbix-server
-    
+  zabbix-agent:
+    container_name: zabbix-agent
+    image: zabbix/zabbix-agent:latest
+    restart: always
+    privileged: true
+    networks:
+      - zabbix
+    environment:
+      - ZBX_HOSTNAME=Zabbix_host
+      - ZBX_SERVER_HOST=zabbix-server
