@@ -28,7 +28,7 @@ services:
     image: zabbix/zabbix-web-nginx-mysql:latest
     ports:
       - "10080:80"
-    network:
+    networks:
       - zabbix
     environment:
       - ZBX_SERVER_HOST=zabbix-server
