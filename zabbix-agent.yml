@@ -6,7 +6,7 @@ services:
     restart: always
     privileged: true
     networks:
-      - zabbix
+      - zabbix_zabbix
     environment:
       - ZBX_HOSTNAME=Zabbix_host
       - ZBX_SERVER_HOST=zabbix-server
