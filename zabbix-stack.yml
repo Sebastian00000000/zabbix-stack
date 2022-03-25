@@ -4,6 +4,7 @@ services:
   zabbix-mysql:
     container_name: zabbix-mysql
     image: mysql:latest
+    restart: always
     networks:
       - zabbix
     environment:
@@ -15,6 +16,7 @@ services:
   zabbix-server:
     container_name: zabbix-server
     image: zabbix/zabbix-server-mysql:latest
+    restart: always
     networks:
       - zabbix
     environment:
@@ -26,8 +28,9 @@ services:
   zabbix-web:
     container_name: zabbix-web
     image: zabbix/zabbix-web-nginx-mysql:latest
+    restart: always
     ports:
-      - "11080:80"
+      - "11080:8080"
     networks:
       - zabbix
     environment:
