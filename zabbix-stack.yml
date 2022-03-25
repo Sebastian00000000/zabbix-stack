@@ -22,6 +22,19 @@ services:
       - MYSQL_DATABASE=zabbix
       - MYSQL_USER=zabbix
       - MYSQL_PASSWORD=zabbix
+  
+  zabbix-web:
+    container_name: zabbix-web
+    image: zabbix/zabbix-web-nginx-mysql:latest
+    ports:
+      - "10080:80"
+    network:
+      - zabbix
+    environment:
+      - ZBX_SERVER_HOST=zabbix-server
+      - DB_SERVER_HOST=zabbix-mysql
+      - MYSQL_USER=zabbix
+      - MYSQL_PASSWORD=zabbix
 
 networks:
   zabbix:
